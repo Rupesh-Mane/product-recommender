@@ -1,0 +1,43 @@
+#virtual environment
+.venv/
+
+#Local database
+users.db
+
+#secrets email config
+email_config.txt
+
+#Images :ignore all by default
+images/*
+
+#But keep only specific  images
+!images/login_bg.jpg
+!images/product.jpg
+!images/login_bg1.jpg
+!images/bobby.jpg
+!images/bobby1.jpg
+!images/bobby2.jpg
+!images/bobby3.jpg
+!images/bobby4.jpg
+!images/bobby5.jpg
+!images/iphone.jpg
+!images/samsung.jpg 
+!images/pixel.jpg
+!images/oneplus.jpg
+!images/macbook.jpg 
+!images/dell.jpg
+!images/hp.jpg
+!images/watch.jpg
+!images/buds.jpg 
+!images/ipad.jpg
+!images/bgslide1.jpg
+!images/bgslide2.jpg
+!images/bgslide3.jpg
+!images/bgslide4.jpg
+
+#python cache
+__pycache__/
+*.pyc
+
+#VS code
+.vscode/
