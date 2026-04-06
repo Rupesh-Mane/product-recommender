@@ -34,6 +34,10 @@ images/*
 !images/bgslide2.jpg
 !images/bgslide3.jpg
 !images/bgslide4.jpg
+!images/login_page.png
+!images/search_page.png
+!images/recommendation_page1.png
+!images/recommendation_page2.png
 
 #python cache
 __pycache__/
