@@ -19,8 +19,8 @@ def get_base64(path):
 
 # ---------------- EMAIL CONFIG ---------------- #
 import os
-SENDER_EMAIL = os.getenv("EMAIL")  # your Gmail
-SENDER_PASSWORD = os.getenv("PASSWORD")    # 16-character App Password (no spaces)
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")  # your Gmail
+SENDER_PASSWORD = os.getenv("SENDER_PASSWORD")    # 16-character App Password (no spaces)
 
 # ---------------- SESSION STATE ---------------- #
 if "logged_in" not in st.session_state:
