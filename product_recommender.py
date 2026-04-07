@@ -297,12 +297,21 @@ def hybrid_recommend(user_id, product_name):
     pid = products[products["product_name"]==product_name]["product_id"].values[0]
     collab = collaborative_recommend(user_id, pid)
     content = content_recommend(product_name)
+    # if no collaborative data---> use content only 
+    if not collab:
+        return [p for p in content if p != pid]
+    #otherwise combine both 
     final = collab + [p for p in content if p not in collab and p != pid]
     return final
 
 def img_to_base64(path):
-    with open(path, "rb") as f:
-        return base64.b64encode(f.read()).decode()
+    try:
+        if not os.path.exists(path):
+            return ""
+        with open(path, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    except:
+        return ""
 
 # ---------------- SEARCH ---------------- #
 search_product = st.text_input("🔍 Search Product", key="search_product")
@@ -333,8 +342,14 @@ if search_product:
             ''', unsafe_allow_html=True)
 
         st.markdown("## ✨ Recommended for you")
-        rec_ids = hybrid_recommend(1, row["product_name"])
-        rec_products = products[products["product_id"].isin(rec_ids)]
+        
+        
+        all_rec_ids=[]
+        for _, r in searched_row.iterrows():
+            rec_ids=hybrid_recommend(1, r["product_name"])
+            all_rec_ids.extend(rec_ids)
+        all_rec_ids = list(set(all_rec_ids))
+        rec_products = products[products["product_id"].isin(all_rec_ids)]
 
         st.markdown('<div style="display:flex; overflow-x:auto; gap:20px; padding-bottom:20px;">', unsafe_allow_html=True)
         for r in rec_products.itertuples():
