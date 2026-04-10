@@ -38,6 +38,7 @@ images/*
 !images/search_page.png
 !images/recommendation_page1.png
 !images/recommendation_page2.png
+!images/workflow.jpeg
 
 #python cache
 __pycache__/
